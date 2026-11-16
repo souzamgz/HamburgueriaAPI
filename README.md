@@ -1,10 +1,10 @@
-# 🍔 HamburgueriaAPI
+# 🍔 HamburgueriaAPI 🍔
 
 API REST desenvolvida em Java com Spring Boot para gerenciamento de produtos, pedidos e fluxo de atendimento de uma hamburgueria com serviço de delivery.
 
 O projeto faz parte de uma atividade acadêmica de desenvolvimento de APIs RESTful, utilizando arquitetura em três camadas, persistência de dados e documentação interativa com Swagger.
 
-## 🎯 Objetivo
+## Objetivo
 
 Desenvolver uma API capaz de gerenciar o cardápio de uma hamburgueria e o ciclo de vida dos pedidos, aplicando conceitos de desenvolvimento backend, orientação a objetos, persistência de dados e regras de negócio.
 
