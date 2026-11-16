@@ -1,7 +1,8 @@
 
 package com.hamburgueria.controller;
 
-import com.hamburgueria.entity.Produto;
+import com.hamburgueria.dto.ProdutoRequestDTO;
+import com.hamburgueria.dto.ProdutoResponseDTO;
 import com.hamburgueria.service.ProdutoService;
 
 import org.springframework.http.HttpStatus;
@@ -21,9 +22,11 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> cadastrar(
-            @RequestBody Produto produto) {
-        Produto produtoSalvo = produtoService.cadastrarProduto(produto);
+    public ResponseEntity<ProdutoResponseDTO> cadastrar(
+            @RequestBody ProdutoRequestDTO dados) {
+
+        ProdutoResponseDTO produtoSalvo =
+                produtoService.cadastrarProduto(dados);
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -31,17 +34,19 @@ public class ProdutoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Produto>> listarTodos() {
+    public ResponseEntity<List<ProdutoResponseDTO>> listarTodos() {
         return ResponseEntity.ok(
-                produtoService.listarProdutos());
+                produtoService.listarProdutos()
+        );
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(
+    public ResponseEntity<ProdutoResponseDTO> buscarPorId(
             @PathVariable Long id) {
 
         return ResponseEntity.ok(
-                produtoService.buscarProdutoPorId(id));
+                produtoService.buscarProdutoPorId(id)
+        );
     }
 
     @DeleteMapping("/{id}")

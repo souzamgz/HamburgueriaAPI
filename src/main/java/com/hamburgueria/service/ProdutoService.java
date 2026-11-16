@@ -1,5 +1,8 @@
+
 package com.hamburgueria.service;
 
+import com.hamburgueria.dto.ProdutoRequestDTO;
+import com.hamburgueria.dto.ProdutoResponseDTO;
 import com.hamburgueria.entity.Produto;
 import com.hamburgueria.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
@@ -8,29 +11,55 @@ import java.util.List;
 
 @Service
 public class ProdutoService {
+
     private final ProdutoRepository produtoRepository;
 
     public ProdutoService(ProdutoRepository produtoRepository) {
         this.produtoRepository = produtoRepository;
     }
 
-    public Produto cadastrarProduto(Produto produto) {
-        return produtoRepository.save(produto);
+    public ProdutoResponseDTO cadastrarProduto(ProdutoRequestDTO dados) {
+        Produto produto = new Produto();
+
+        produto.setNome(dados.nome());
+        produto.setCategoria(dados.categoria());
+        produto.setPrecoUnitario(dados.precoUnitario());
+
+        Produto produtoSalvo = produtoRepository.save(produto);
+
+        return converterParaDTO(produtoSalvo);
     }
 
-    public List<Produto> listarProdutos() {
-        return produtoRepository.findAll();
+    public List<ProdutoResponseDTO> listarProdutos() {
+        return produtoRepository.findAll()
+                .stream()
+                .map(this::converterParaDTO)
+                .toList();
     }
 
-    public Produto buscarProdutoPorId(Long id) {
-        return produtoRepository.findById(id)
-                .orElseThrow(() -> {
-                    throw new RuntimeException("Produto não encontrado com o ID: " + id);
-                });
+    public ProdutoResponseDTO buscarProdutoPorId(Long id) {
+        Produto produto = produtoRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Produto não encontrado: " + id));
+
+        return converterParaDTO(produto);
     }
 
     public void excluirProduto(Long id) {
-        Produto produto = buscarProdutoPorId(id);
+        Produto produto = produtoRepository.findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Produto não encontrado: " + id));
+
         produtoRepository.delete(produto);
+    }
+
+    private ProdutoResponseDTO converterParaDTO(Produto produto) {
+        return new ProdutoResponseDTO(
+                produto.getId(),
+                produto.getNome(),
+                produto.getCategoria(),
+                produto.getPrecoUnitario(),
+                produto.isDisponivel()
+        );
     }
 }

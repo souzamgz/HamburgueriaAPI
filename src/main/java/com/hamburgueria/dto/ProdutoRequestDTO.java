@@ -5,6 +5,6 @@ import java.math.BigDecimal;
 public record ProdutoRequestDTO(
         String nome,
         String categoria,
-        BigDecimal precounitario) {
+        BigDecimal precoUnitario) {
 
 }
