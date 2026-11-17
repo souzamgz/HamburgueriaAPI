@@ -14,6 +14,6 @@ public class OpenApiConfig {
                 .info(new Info()
                         .title("Hamburgueria API")
                         .version("1.0")
-                        .description("API for managing hamburgers and orders."));
+                        .description("API REST para gerenciamento do cardápio e dos pedidos de uma hamburgueria."));
     }
 }

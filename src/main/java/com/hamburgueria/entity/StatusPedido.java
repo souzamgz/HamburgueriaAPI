@@ -1,5 +1,11 @@
 package com.hamburgueria.entity;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
+@Schema(
+        description = "Status do pedido",
+        allowableValues = {"RECEBIDO", "EM_PREPARO", "PRONTO", "ENTREGUE"}
+)
 public enum StatusPedido {
 
     RECEBIDO,
