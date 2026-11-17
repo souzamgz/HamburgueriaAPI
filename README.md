@@ -68,13 +68,19 @@ Representa cada produto e sua quantidade dentro de um pedido.
 | quantidade | Quantidade solicitada |
 | precoSubtotal | Subtotal do item |
 
-## Endpoints previstos
+## Endpoints
 
 | Método | Endpoint | Descrição |
 |---|---|---|
 | GET | `/api/produtos` | Listar produtos disponíveis |
+| GET | `/api/produtos/{id}` | Buscar produto por ID |
 | POST | `/api/produtos` | Cadastrar produto |
+| PUT | `/api/produtos/{id}` | Atualizar produto |
+| PATCH | `/api/produtos/{id}/disponibilidade` | Atualizar disponibilidade do produto |
+| DELETE | `/api/produtos/{id}` | Excluir produto |
 | POST | `/api/pedidos` | Criar pedido |
+| GET | `/api/pedidos` | Listar pedidos |
+| GET | `/api/pedidos/{id}` | Buscar pedido por ID |
 | PATCH | `/api/pedidos/{id}/status` | Atualizar status do pedido |
 
 ## Regras de negócio
@@ -95,11 +101,11 @@ Transições inválidas devem ser rejeitadas pela API, retornando HTTP 400.
 
 ## Documentação da API
 
-A documentação interativa será disponibilizada pelo Swagger UI após a implementação e inicialização da aplicação.
+A documentação interativa está disponível pelo Swagger UI após a inicialização da aplicação.
 
-Endereço previsto:
+Endereço:
 
-`http://localhost:8080/swagger-ui/index.html`
+`http://localhost:8081/swagger-ui/index.html`
 
 ## Como executar
 
@@ -137,22 +143,22 @@ No Windows:
 
 A aplicação será iniciada, por padrão, em:
 
-`http://localhost:8080`
+`http://localhost:8081`
 
 ## Desenvolvimento
 
-- [ ] Configuração inicial do Spring Boot e Maven.
-- [ ] Configuração do banco de dados H2.
-- [ ] Criação das entidades.
-- [ ] Implementação dos repositories.
-- [ ] Implementação das regras de negócio nos services.
-- [ ] Implementação dos controllers.
-- [ ] Criação dos DTOs.
-- [ ] Tratamento global de exceções.
-- [ ] Configuração do Swagger/OpenAPI.
+- [x] Configuração inicial do Spring Boot e Maven.
+- [x] Configuração do banco de dados H2.
+- [x] Criação das entidades.
+- [x] Implementação dos repositories.
+- [x] Implementação das regras de negócio nos services.
+- [x] Implementação dos controllers.
+- [x] Criação dos DTOs.
+- [x] Tratamento global de exceções.
+- [x] Configuração do Swagger/OpenAPI.
 - [ ] Criação do script `data.sql`.
-- [ ] Testes dos endpoints e das regras de negócio.
-- [ ] Revisão e documentação final.
+- [x] Testes dos endpoints e das regras de negócio.
+- [x] Revisão e documentação final.
 
 ---
 
