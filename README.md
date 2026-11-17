@@ -156,7 +156,7 @@ A aplicação será iniciada, por padrão, em:
 - [x] Criação dos DTOs.
 - [x] Tratamento global de exceções.
 - [x] Configuração do Swagger/OpenAPI.
-- [ ] Criação do script `data.sql`.
+- [x] Criação do script `data.sql`.
 - [x] Testes dos endpoints e das regras de negócio.
 - [x] Revisão e documentação final.
 
